@@ -42,7 +42,7 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 ## Getting Started
 
 ### Prerequisites
-- Docker Desktop and Node.js installed on your machine
+- Docker Desktop installed on your machine
 - Git
 
 ### Installation
@@ -55,12 +55,7 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 2. Navigate to the project directory
 
    
-3. Install the Node Package Manager
-   ```bash
-   npm install
-   ```
-   
-4. Start the application using Docker
+3. Start the application using Docker
    ```bash
    docker-compose up
    ```
