@@ -1,13 +1,14 @@
 # World's Pantry 🍲🌍
 
-A community-driven recipe sharing platform where users can exchange recipes, discover new dishes, and connect with fellow food enthusiasts.
+A community-driven recipe sharing platform where users can exchange recipes, discover new cultures, and connect with fellow food enthusiasts.
 
 ## About The Project
 
-World's Pantry is a full-stack web application built for the Software Engineering module (CMP-N204-0) at the University of Roehampton. The project follows the theme of **"Sharing, exchange and building community"** by creating a space where users can share their favourite recipes together, for mutual benefit rather than financial gain.
+World's Pantry is a full-stack web application built for the Software Engineering module (CMP-N204-0) at the University of Roehampton. The project follows the theme of **"Sharing, exchange and building community"** by creating a space where users can share their favourite cultural recipes together, for mutual benefit rather than financial gain.
 
 ### Target Users
-- Home cooks looking to share and discover recipes
+- Home cooks looking to share and discover recipes from around the world
+- Anyone looking to keep their culture alive through sharing recipes inherited by generations
 - Young adults exploring new cuisines
 - People with dietary restrictions seeking suitable recipes
 - Food enthusiasts wanting to connect with like-minded individuals
@@ -41,7 +42,7 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 ## Getting Started
 
 ### Prerequisites
-- Docker and Docker Compose installed on your machine
+- Docker Desktop and Node.js installed on your machine
 - Git
 
 ### Installation
@@ -52,11 +53,14 @@ World's Pantry is a full-stack web application built for the Software Engineerin
    ```
 
 2. Navigate to the project directory
-   ```bash
-   cd WorldsPantry
-   ```
 
-3. Start the application using Docker
+   
+3. Install the Node Package Manager
+   ```bash
+   npm install
+   ```
+   
+4. Start the application using Docker
    ```bash
    docker-compose up
    ```
@@ -67,18 +71,14 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 
 | Member | Role |
 |--------|------|
-| Amina | Project Coordination / Meetings |
-| Amel | Documentation / Code of Conduct |
-| Pooji | Personas / Requirements Support |
-| Emmanuel | Repository Setup / README / Tooling |
+| Amina | |
+| Amel | |
+| Pooji | |
+| Emmanuel | |
 
 ## Project Status
 
 🚀 **Current Sprint:** Sprint 1
-
-## License
-
-This project was made for educational purposes as part of the University of Roehampton Software Engineering module.
 
 ## Acknowledgements
 
