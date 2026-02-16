@@ -73,7 +73,9 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 
 ## Project Status
 
-🚀 **Current Sprint:** Sprint 1
+✅ **Completed:** Sprint 1
+
+🚀 **Current Sprint:** Sprint 2
 
 ## Acknowledgements
 
