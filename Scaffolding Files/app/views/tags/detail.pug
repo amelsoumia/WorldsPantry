@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .page
+    .page-header
+      a.back-link(href="/tags") ← All Tags
+      h1
+        span.tag-badge(class=tag.type === 'dietary' ? 'tag-dietary' : 'tag-country') #{tag.type}
+        |  #{tag.name}
+      p #{tag.recipes.length} recipe#{tag.recipes.length !== 1 ? 's' : ''} tagged #{tag.name}
+
+    if tag.recipes.length === 0
+      .empty-state
+        p No recipes with this tag yet.
+    else
+      .recipes-grid
+        each recipe in tag.recipes
+          .recipe-card
+            .recipe-card-image
+              .recipe-card-placeholder 🍳
+            .recipe-card-body
+              .recipe-card-meta
+                span.recipe-country #{recipe.country || 'International'}
+                span.recipe-author by #{recipe.username}
+              h3.recipe-card-title
+                a(href=`/recipes/${recipe.recipe_id}`) #{recipe.title}

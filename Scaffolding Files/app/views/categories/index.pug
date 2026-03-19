@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  .page
+    .page-header
+      h1 Browse by Category
+      p Find recipes grouped by meal type.
+
+    .categories-grid
+      each cat in categories
+        a.category-card(href=`/categories/${cat.category_id}`)
+          .category-icon
+            - var icons = { Breakfast: '🍳', Lunch: '🥗', Dinner: '🍲', Dessert: '🍰', Snacks: '🥨', Drinks: '🥤', Soup: '🍜', Salad: '🥙' }
+            = icons[cat.name] || '🍽'
+          h3= cat.name
+          p #{cat.recipe_count} recipe#{cat.recipe_count !== 1 ? 's' : ''}
