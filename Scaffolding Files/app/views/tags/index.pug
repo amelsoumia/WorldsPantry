@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .page
+    .page-header
+      h1 Browse by Tag
+      p Filter recipes by country or dietary requirement.
+
+    .tags-section
+      h2 🌍 Countries
+      .tags-cloud
+        each tag in countryTags
+          a.tag-cloud-item(href=`/tags/${tag.tag_id}`)
+            span= tag.name
+            span.tag-cloud-count #{countMap[tag.tag_id] || 0}
+
+    .tags-section
+      h2 🥗 Dietary
+      .tags-cloud
+        each tag in dietaryTags
+          a.tag-cloud-item.tag-dietary(href=`/tags/${tag.tag_id}`)
+            span= tag.name
+            span.tag-cloud-count #{countMap[tag.tag_id] || 0}

@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .page
+    .page-header
+      a.back-link(href="/categories") ← All Categories
+      h1= category.name
+      p #{category.recipes.length} recipe#{category.recipes.length !== 1 ? 's' : ''} in this category
+
+    if category.recipes.length === 0
+      .empty-state
+        p No recipes in this category yet.
+    else
+      .recipes-grid
+        each recipe in category.recipes
+          .recipe-card
+            .recipe-card-image
+              .recipe-card-placeholder 🍳
+            .recipe-card-body
+              .recipe-card-meta
+                span.recipe-country #{recipe.country || 'International'}
+                span.recipe-author by #{recipe.username}
+              h3.recipe-card-title
+                a(href=`/recipes/${recipe.recipe_id}`) #{recipe.title}
