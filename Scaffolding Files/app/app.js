@@ -22,6 +22,22 @@ app.get("/", function(req, res) {
     res.send("Hello world!");
 });
 
+// Create a route for browsing page
+app.get('/explore', async (req, res) => {
+
+    const categories = await Category.getAllWithCounts();
+    const countryTags = await Tag.getCountryTags();
+    const dietaryTags = await Tag.getDietaryTags();
+    const allRecipes = await Recipe.getAllForBrowse();
+
+    res.render('explore', {
+        categories,
+        countryTags,
+        dietaryTags,
+        allRecipes
+    });
+});
+
 // Start server on port 3000
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
