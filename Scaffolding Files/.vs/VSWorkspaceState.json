@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\models",
+    "\\app\\routes",
+    "\\app\\views",
+    "\\app\\views\\auth",
+    "\\app\\views\\categories"
+  ],
+  "SelectedNode": "\\app\\views\\categories\\index.pug",
+  "PreviewInSolutionExplorer": false
+}

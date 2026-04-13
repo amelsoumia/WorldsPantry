@@ -67,8 +67,8 @@ router.post('/signup', async (req, res) => {
       [username, email, hashedPassword, dietary_preferences || null]
     );
 
-    const newUser = await db.query('SELECT * FROM User WHERE email = ?', [email]);
-    req.session.user = { user_id: newUser[0].user_id, username, email };
+    const newUser = await db.query('SELECT * FROM User WHERE username = ?', [username]);
+    req.session.user = { userID: newUser[0].userID };
     res.redirect('/');
   } catch (err) {
     console.error('Signup error:', err);
@@ -88,9 +88,9 @@ router.get('/signin', (req, res) => {
 
 // POST /auth/signin
 router.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email || !password) {
+  if (!username || !password) {
     return res.render('auth/signin', {
       title: 'Sign In',
       error: 'Email and password are required.',
@@ -98,7 +98,7 @@ router.post('/signin', async (req, res) => {
   }
 
   try {
-    const rows = await db.query('SELECT * FROM User WHERE email = ?', [email]);
+    const rows = await db.query('SELECT * FROM User WHERE username = ?', [username]);
     if (rows.length === 0) {
       return res.render('auth/signin', {
         title: 'Sign In',
@@ -115,7 +115,7 @@ router.post('/signin', async (req, res) => {
       });
     }
 
-    req.session.user = { user_id: user.user_id, username: user.username, email: user.email };
+    req.session.user = { user_id: user.userID, username: user.username };
     res.redirect('/');
   } catch (err) {
     console.error('Signin error:', err);

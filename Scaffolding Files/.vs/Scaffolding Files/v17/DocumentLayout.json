@@ -1,0 +1,258 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\categories\\index.pug||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\views\\categories\\index.pug||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\auth\\signin.pug||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\views\\auth\\signin.pug||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\categories.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\categories.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\recipe.pug||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\views\\recipe.pug||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserRepository.js||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\UserRepository.js||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\User.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\User.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Category.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\Category.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\tags.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\routes\\tags.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\RecipeTag.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\RecipeTag.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Tag.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\models\\Tag.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\tags\\detail.pug||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\views\\tags\\detail.pug||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.pug",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\categories\\index.pug",
+              "RelativeDocumentMoniker": "app\\views\\categories\\index.pug",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\categories\\index.pug",
+              "RelativeToolTip": "app\\views\\categories\\index.pug",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2026-03-23T12:50:42.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepository.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserRepository.js",
+              "RelativeDocumentMoniker": "app\\models\\UserRepository.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserRepository.js",
+              "RelativeToolTip": "app\\models\\UserRepository.js",
+              "ViewState": "AgIAABMAAAAAAAAAAAAEwCkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-22T23:29:36.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "tags.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\tags.js",
+              "RelativeDocumentMoniker": "app\\routes\\tags.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\tags.js",
+              "RelativeToolTip": "app\\routes\\tags.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-22T23:27:26.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "recipe.pug",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\recipe.pug",
+              "RelativeDocumentMoniker": "app\\views\\recipe.pug",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\recipe.pug",
+              "RelativeToolTip": "app\\views\\recipe.pug",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2026-03-22T20:55:34.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserProfile.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserProfile.js",
+              "RelativeDocumentMoniker": "app\\models\\UserProfile.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\UserProfile.js",
+              "RelativeToolTip": "app\\models\\UserProfile.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-21T00:02:32.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "categories.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\categories.js",
+              "RelativeDocumentMoniker": "app\\routes\\categories.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\categories.js",
+              "RelativeToolTip": "app\\routes\\categories.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T23:04:03.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "auth.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\auth.js",
+              "RelativeDocumentMoniker": "app\\routes\\auth.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\routes\\auth.js",
+              "RelativeToolTip": "app\\routes\\auth.js",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAEwAsAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T22:57:44.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Category.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Category.js",
+              "RelativeDocumentMoniker": "app\\models\\Category.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Category.js",
+              "RelativeToolTip": "app\\models\\Category.js",
+              "ViewState": "AgIAAAUAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T20:24:21.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\User.js",
+              "RelativeDocumentMoniker": "app\\models\\User.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\User.js",
+              "RelativeToolTip": "app\\models\\User.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-17T14:18:11.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "app.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\app.js",
+              "RelativeDocumentMoniker": "app\\app.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\app.js",
+              "RelativeToolTip": "app\\app.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-17T14:16:29.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "signin.pug",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\auth\\signin.pug",
+              "RelativeDocumentMoniker": "app\\views\\auth\\signin.pug",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\auth\\signin.pug",
+              "RelativeToolTip": "app\\views\\auth\\signin.pug",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2026-03-19T22:58:05.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Tag.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Tag.js",
+              "RelativeDocumentMoniker": "app\\models\\Tag.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\Tag.js",
+              "RelativeToolTip": "app\\models\\Tag.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T20:36:43.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "detail.pug",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\tags\\detail.pug",
+              "RelativeDocumentMoniker": "app\\views\\tags\\detail.pug",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\views\\tags\\detail.pug",
+              "RelativeToolTip": "app\\views\\tags\\detail.pug",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2026-03-19T22:55:56.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RecipeTag.js",
+              "DocumentMoniker": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\RecipeTag.js",
+              "RelativeDocumentMoniker": "app\\models\\RecipeTag.js",
+              "ToolTip": "C:\\Users\\amels\\OneDrive\\Desktop\\Software Engineering\\Coursework\\WorldsPantry\\Scaffolding Files\\app\\models\\RecipeTag.js",
+              "RelativeToolTip": "app\\models\\RecipeTag.js",
+              "ViewState": "AgIAAAIAAAAAAAAAAADgvwMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T20:24:14.107Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
