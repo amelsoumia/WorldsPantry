@@ -1,1 +1,17 @@
-extends layout.pug
+//- Browsing page
+
+extends ../layout 
+
+block content
+
+  h1 Feed
+  p Explore recipes and filter them using country and dietary categories.
+
+  .browse-layout
+    aside
+      include _categories.pug
+
+    main
+      h2 Recipes
+      - const recipes = allRecipes
+      include _recipe-card.pug

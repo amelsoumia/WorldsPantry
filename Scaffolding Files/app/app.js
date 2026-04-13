@@ -1,5 +1,7 @@
 // Import express.js
 const express = require("express");
+const Category = require('./models/Category');
+const Tag = require('./models/Tag');
 
 // Create express app
 var app = express();
@@ -12,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set PUG as view engine
 app.set('view engine', 'pug');
+app.set('views', './app/views');
 
 // Get the database connection
 const db = require('./services/db');
@@ -19,7 +22,7 @@ const db = require('./services/db');
 
 // Create a route for root - /
 app.get("/", function(req, res) {
-    res.send("Hello world!");
+    res.render('index');
 });
 
 // Create a route for browsing page
@@ -30,7 +33,7 @@ app.get('/explore', async (req, res) => {
     const dietaryTags = await Tag.getDietaryTags();
     const allRecipes = await Recipe.getAllForBrowse();
 
-    res.render('explore', {
+    res.render('explore-page', {
         categories,
         countryTags,
         dietaryTags,

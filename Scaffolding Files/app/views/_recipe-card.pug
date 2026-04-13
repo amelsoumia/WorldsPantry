@@ -1,17 +1,21 @@
-h1= recipe.title
+//- Recipe preview cards to be displayed in browsing page
 
-form(action=`/recipe/${recipe.recipe_ID}/like` method="POST")
-  input(type="hidden" name="user_ID" value="1")
-  button Like ❤️
+if recipes.length === 0
+  p There are currently no recipes.
 
-h2 Leave a Review
-form(action=`/recipe/${recipe.recipe_ID}/review` method="POST")
-  input(type="hidden" name="user_ID" value="1")
-  input(type="number" name="rating" min="1" max="5")
-  textarea(name="comment")
-  button Submit
+else
+  .recipes
+    each recipe in recipes
 
-h2 Reviews
-each review in reviews
-  p= review.comment
-  p Rating: #{review.rating}
+      article
+        if recipe.image
+          img(src=recipe.image, alt=recipe.title)
+
+        else
+          img(src="/images/default-recipe-image", alt="Default Recipe Image")
+
+        h3
+          a(href=`/recipes/${recipe.recipe_id}`)= recipe.title
+
+        p= recipe.country || 'International'
+        p by #{recipe.username}

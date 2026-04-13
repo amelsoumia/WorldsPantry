@@ -1,0 +1,20 @@
+﻿//- Tags to be used in browsing page
+
+h2 Categories
+button(type="button" data-category-id="all") All
+each cat in categories
+  button(type="button" data-category-id=cat.category_id)= cat.name
+  - var icons = { Breakfast: '🍳', Lunch: '🥗', Dinner: '🍲', Dessert: '🍰', Snacks: '🥨', Drinks: '🥤', Soup: '🍜', Salad: '🥙' }
+  | #{icons[cat.name] || '🍽'} #{cat.name} (#{cat.recipe_count})
+
+h2 Country
+select(name="country")
+  option(value="") All Countries
+  each tag in countryTags
+    option(value=tag.tag_id)= tag.name
+
+h2 Dietary
+select(name="dietary")
+  option(value="") All Dietary Options
+  each tag in dietaryTags
+    option(value=tag.tag_id)= tag.name
