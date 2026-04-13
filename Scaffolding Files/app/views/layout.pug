@@ -1,0 +1,32 @@
+
+doctype html
+
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title World's Pantry
+    link(rel="stylesheet", href="/style.css")
+
+  body
+     header
+        nav
+            .nav-left
+                img(src="/images/logo.png", alt="Logo")
+                a(href="/") Home
+                a(href="/browse") Browse
+
+            .nav-center
+                form.search-form(action="/search", method="GET")
+                    input.search-input(type="text", name="browseSearchbar", placeholder="Browse recipes")
+
+            .nav-right
+                if user && userProfile.profileImage
+                    img(src=userProfile.profileImage)
+                else
+                    img(src="/images/default-user-icon.png", alt="Profile Picture")
+
+     main
+        block content 
+
+        
+    

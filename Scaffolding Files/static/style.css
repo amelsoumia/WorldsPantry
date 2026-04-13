@@ -1,0 +1,60 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #faf0e1;
+}
+
+header {
+    background-color: #6a4a47;
+    padding: 16px 28px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Style and position seperate parts of the nav bar */
+.nav-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-left a {
+    text-decoration: none;
+    color: #b7c15c;
+    font-size: 15px;
+}
+
+.nav-left a:hover {
+    text-decoration: underline;
+}
+
+.nav-left img,.nav-right img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+}
+
+.nav-right img {
+    border-radius: 50%;
+}

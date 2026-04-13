@@ -1,0 +1,17 @@
+h1= recipe.title
+
+form(action=`/recipe/${recipe.recipe_ID}/like` method="POST")
+  input(type="hidden" name="user_ID" value="1")
+  button Like ❤️
+
+h2 Leave a Review
+form(action=`/recipe/${recipe.recipe_ID}/review` method="POST")
+  input(type="hidden" name="user_ID" value="1")
+  input(type="number" name="rating" min="1" max="5")
+  textarea(name="comment")
+  button Submit
+
+h2 Reviews
+each review in reviews
+  p= review.comment
+  p Rating: #{review.rating}
