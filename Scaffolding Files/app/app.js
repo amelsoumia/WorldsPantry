@@ -32,7 +32,7 @@ app.get("/login", function (req, res) {
 
 // Create a route for signup page
 app.get("/signup", function (req, res) {
-    res.render('signup');
+    res.render('signup', { formData: {} });
 });
 
 // Create a route for browsing page

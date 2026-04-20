@@ -59,7 +59,7 @@ nav {
     border-radius: 50%;
 }
 
-/* Home page styliing */
+/* Home page styliing
 .header{
     position: relative;
     height: 60vh;
@@ -93,6 +93,106 @@ nav {
     display:flex;
     justify-content: center;
     gap: 2rem;
+}
+*/
+/* Login page styling */
+.auth-page {
+    display: flex;
+    height: 100vh;
+}
+
+.auth-card {
+    display: flex;
+    width: 100%;
+}
+
+.auth-img {
+    width: 50%;
+}
+
+.auth-img img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 0.4rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #888;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.75rem;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.auth-footer {
+    padding: 0 4rem;
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.auth-footer a {
+    color: #c1440e;
+    text-decoration: none;
+}
+
+.alert-error {
+    background: #fff0f0;
+    color: #c00;
+    border: 1px solid #f5c0c0;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
 }
 
 /* recipe page styling */
