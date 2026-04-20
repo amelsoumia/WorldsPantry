@@ -25,6 +25,16 @@ app.get("/", function(req, res) {
     res.render('index');
 });
 
+// Create a route for login page
+app.get("/login", function (req, res) {
+    res.render('signin');
+});
+
+// Create a route for signup page
+app.get("/signup", function (req, res) {
+    res.render('signup');
+});
+
 // Create a route for browsing page
 app.get('/explore', async (req, res) => {
 
