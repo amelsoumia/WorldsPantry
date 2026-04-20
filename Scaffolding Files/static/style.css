@@ -59,7 +59,7 @@ nav {
     border-radius: 50%;
 }
 
-/* Home page styliing
+/* Home page styliing */
 .header{
     position: relative;
     height: 60vh;
@@ -94,8 +94,8 @@ nav {
     justify-content: center;
     gap: 2rem;
 }
-*/
-/* Login page styling */
+
+/* Login page styling 
 .auth-page {
     display: flex;
     height: 100vh;
@@ -194,7 +194,7 @@ nav {
     margin-bottom: 1rem;
     font-size: 0.875rem;
 }
-
+*/
 /* recipe page styling */
 .recipe-hero{
     width: 100%;
