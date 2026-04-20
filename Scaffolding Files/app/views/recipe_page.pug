@@ -1,0 +1,29 @@
+extends ./layout
+
+block content
+    img.recipe-hero(src="/images/salad-bowl.jpg" alt="salad-bowl")
+    .recipe-meta
+        span 🌍 #{recipe.country_id} 
+        span 👤 servings
+        span ⏱ min
+        span ● Difficulty
+        button.like ♥
+        button.save ⊞
+    .recipe-body
+        .recipe-main
+            h1= recipe.title
+            .divider
+            h2 Description
+            p= recipe.description
+            .divider
+            h2 Ingredients
+            ul
+                each item in recipe.ingredient_list.split(',')
+                    li= item.trim()
+            .divider
+            h2 Instructions
+            ol
+                each step in recipe.instructions.split(',')
+                    li= step.trim()
+            .divider
+            h2 Comments

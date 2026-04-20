@@ -41,6 +41,9 @@ app.get('/explore', async (req, res) => {
     });
 });
 
+const recipeRouter = require('./services/recipe');
+app.use('/', recipeRouter);
+
 // Start server on port 3000
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
