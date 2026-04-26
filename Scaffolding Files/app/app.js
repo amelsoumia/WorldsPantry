@@ -2,6 +2,7 @@
 const express = require("express");
 const Category = require('./models/Category');
 const Tag = require('./models/Tag');
+const Recipe = require('./models/Recipe'); // (IMPORTANT: was missing)
 
 // Create express app
 var app = express();
@@ -20,22 +21,26 @@ app.set('views', './app/views');
 const db = require('./services/db');
 
 
-// Create a route for root - /
+// ==============================
+// ROUTES
+// ==============================
+
+// Home page
 app.get("/", function(req, res) {
     res.render('index');
 });
 
-// Create a route for login page
+// Login page
 app.get("/login", function (req, res) {
     res.render('signin');
 });
 
-// Create a route for signup page
+// Signup page
 app.get("/signup", function (req, res) {
     res.render('signup', { formData: {} });
 });
 
-// Create a route for browsing page
+// Explore page
 app.get('/explore', async (req, res) => {
 
     const categories = await Category.getAllWithCounts();
@@ -51,10 +56,23 @@ app.get('/explore', async (req, res) => {
     });
 });
 
+
+// ==============================
+// ROUTERS (TEAM STRUCTURE)
+// ==============================
+
+// Existing recipe routes
 const recipeRouter = require('./services/recipe');
 app.use('/', recipeRouter);
 
-// Start server on port 3000
+// YOUR routes (profile + settings)
+app.use('/', require('./routes/profile'));
+
+
+// ==============================
+// START SERVER
+// ==============================
+
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
 });
