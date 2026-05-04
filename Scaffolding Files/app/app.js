@@ -67,7 +67,7 @@ app.use('/', recipeRouter);
 
 // YOUR routes (profile + settings)
 app.use('/', require('./routes/profile'));
-
+app.use('/', require('./routes/posts'));
 
 // ==============================
 // START SERVER
