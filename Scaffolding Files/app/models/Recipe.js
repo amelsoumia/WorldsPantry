@@ -110,4 +110,15 @@ class Recipe {
     
 }
 
+// Get all recipes created by a specific user
+    static async getByUser(userId) {
+        const sql = `
+            SELECT recipe_id, title, description
+            FROM recipe
+            WHERE user_id = ?
+        `;
+        return await db.query(sql, [userId]);
+    }
+
+}
 module.exports = { Recipe };
