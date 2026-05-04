@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  .form-page
+    h1 Share a Recipe
+
+    if error
+      .alert.alert-error= error
+
+    form.recipe-form(action="/recipe/create" method="POST")
+
+      .form-group
+        label(for="title") Recipe Title *
+        input#title(type="text" name="title" placeholder="e.g. Jollof Rice" required value=formData && formData.title || '')
+
+      .form-group
+        label(for="description") Description
+        textarea#description(name="description" placeholder="A short description of your dish..." rows=3)= formData && formData.description || ''
+
+      .form-group
+        label(for="ingredient_list") Ingredients
+        textarea#ingredient_list(name="ingredient_list" placeholder="e.g. 2 cups rice, 1 onion, tomatoes..." rows=5)= formData && formData.ingredient_list || ''
+
+      .form-group
+        label(for="instructions") Instructions
+        textarea#instructions(name="instructions" placeholder="Step 1: ... Step 2: ..." rows=6)= formData && formData.instructions || ''
+
+      .form-group
+        label(for="country_id") Country of Origin
+        select#country_id(name="country_id")
+          option(value="") — Select a country —
+          each country in countries
+            option(value=country.country_id)= country.name
+
+      .form-actions
+        button.btn-submit(type="submit") Post Recipe
+        a(href="/profile") Cancel
