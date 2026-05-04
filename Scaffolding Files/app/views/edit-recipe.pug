@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  .form-page
+    h1 Edit Recipe
+
+    if error
+      .alert.alert-error= error
+
+    form.recipe-form(action=`/recipe/${recipe.recipe_id}/edit` method="POST")
+
+      .form-group
+        label(for="title") Recipe Title *
+        input#title(type="text" name="title" required value=recipe.title)
+
+      .form-group
+        label(for="description") Description
+        textarea#description(name="description" rows=3)= recipe.description || ''
+
+      .form-group
+        label(for="ingredient_list") Ingredients
+        textarea#ingredient_list(name="ingredient_list" rows=5)= recipe.ingredient_list || ''
+
+      .form-group
+        label(for="instructions") Instructions
+        textarea#instructions(name="instructions" rows=6)= recipe.instructions || ''
+
+      .form-group
+        label(for="country_id") Country of Origin
+        select#country_id(name="country_id")
+          option(value="") — Select a country —
+          each country in countries
+            option(value=country.country_id selected=country.country_id === recipe.country_id)= country.name
+
+      .form-actions
+        button.btn-submit(type="submit") Save Changes
+        a(href=`/recipe/${recipe.recipe_id}`) Cancel
