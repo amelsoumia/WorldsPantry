@@ -1,11 +1,42 @@
-doctype html
-html
-  head
-    title Profile
-  body
-    h1 User Profile
+extends layout
 
-    p Username: DemoUser
-    p Email: demo@email.com
+block content
+  .profile-page
 
-    a(href="/settings") Go to Settings
+    //- User info section
+    .profile-header
+      img(src="/images/default-user-icon.png" alt="Profile Picture")
+      h1= profileUser.username
+      p Member since #{new Date(profileUser.join_date).toLocaleDateString()}
+
+    //- Recipes this user created
+    .profile-section
+      h2 My Recipes
+      if createdRecipes.length === 0
+        p You haven't posted any recipes yet.
+      else
+        .recipe-grid
+          each recipe in createdRecipes
+            .recipe-card
+              h3
+                a(href=`/recipe/${recipe.recipe_id}`)= recipe.title
+              p= recipe.description || 'No description provided.'
+              .recipe-card-actions
+                a(href=`/recipe/${recipe.recipe_id}/edit`) Edit
+                form(action=`/recipe/${recipe.recipe_id}/delete` method="POST" style="display:inline")
+                  button(type="submit" onclick="return confirm('Delete this recipe?')") Delete
+
+    //- Recipes this user saved
+    .profile-section
+      h2 Saved Recipes
+      if savedRecipes.length === 0
+        p You haven't saved any recipes yet.
+      else
+        .recipe-grid
+          each recipe in savedRecipes
+            .recipe-card
+              h3
+                a(href=`/recipe/${recipe.recipe_id}`)= recipe.title
+              p= recipe.description || 'No description provided.'
+              form(action=`/recipe/${recipe.recipe_id}/unsave` method="POST")
+                button(type="submit") Unsave
