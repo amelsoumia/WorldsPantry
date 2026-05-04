@@ -106,11 +106,9 @@ class Recipe {
     //     for(var row of results) {
     //         this.modules.push(new Module(row.code, row.name));
     //     }
-    // }
-    
-}
+    }
 
-// Get all recipes created by a specific user
+    // Get all recipes created by a specific user
     static async getByUser(userId) {
         const sql = `
             SELECT recipe_id, title, description
