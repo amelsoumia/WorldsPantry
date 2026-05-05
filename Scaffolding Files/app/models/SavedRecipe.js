@@ -46,4 +46,4 @@ class SavedRecipe {
 
 }
 
-module.exports = { SavedRecipe };
+module.exports = SavedRecipe;

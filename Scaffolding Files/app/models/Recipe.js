@@ -137,6 +137,7 @@ class Recipe {
 
     // Delete recipe only if it belongs to the logged-in user
     static async deleteRecipe(recipeId, userId) {
+
         return db.query(`
         DELETE FROM recipe
         WHERE recipe_id = ? AND user_id = ?

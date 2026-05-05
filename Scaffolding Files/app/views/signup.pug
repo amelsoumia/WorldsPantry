@@ -16,10 +16,6 @@ block content
           input#username(type="text" name="username" placeholder="e.g. chef_amina" value=formData.username || '' required)
 
         .form-group
-          label(for="email") Email Address
-          input#email(type="email" name="email" placeholder="you@example.com" value=formData.email || '' required)
-
-        .form-group
           label(for="password") Password
             span.label-hint  (min. 8 characters)
           input#password(type="password" name="password" placeholder="Create a strong password" required)
@@ -27,18 +23,6 @@ block content
         .form-group
           label(for="confirm_password") Confirm Password
           input#confirm_password(type="password" name="confirm_password" placeholder="Repeat your password" required)
-
-        .form-group
-          label(for="dietary_preferences") Dietary Preferences
-            span.label-hint  (optional)
-          select#dietary_preferences(name="dietary_preferences")
-            option(value="") No preference
-            option(value="Vegan") Vegan
-            option(value="Vegetarian") Vegetarian
-            option(value="Gluten-Free") Gluten-Free
-            option(value="Dairy-Free") Dairy-Free
-            option(value="Halal") Halal
-            option(value="Kosher") Kosher
 
         button.btn-submit(type="submit") Create Account
 
