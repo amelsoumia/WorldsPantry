@@ -14,9 +14,9 @@ router.get('/signup', (req, res) => {
 
 // POST /auth/signup
 router.post('/signup', async (req, res) => {
-  const { username, email, password, confirm_password, dietary_preferences } = req.body;
+  const { username, password, confirm_password } = req.body;
 
-  if (!username || !email || !password) {
+  if (!username || !password) {
     return res.render('auth/signup', {
       title: 'Create Account',
       error: 'All fields are required.',
@@ -41,16 +41,6 @@ router.post('/signup', async (req, res) => {
   }
 
   try {
-    // Check email not already registered
-    const existing = await db.query('SELECT user_id FROM User WHERE email = ?', [email]);
-    if (existing.length > 0) {
-      return res.render('auth/signup', {
-        title: 'Create Account',
-        error: 'An account with this email already exists.',
-        formData: req.body,
-      });
-    }
-
     // Check username not taken
     const existingUsername = await db.query('SELECT user_id FROM User WHERE username = ?', [username]);
     if (existingUsername.length > 0) {
@@ -63,12 +53,12 @@ router.post('/signup', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     await db.query(
-      'INSERT INTO User (username, email, password, dietary_preferences) VALUES (?, ?, ?, ?)',
-      [username, email, hashedPassword, dietary_preferences || null]
-    );
+  'INSERT INTO `user` (username, password_hash) VALUES (?, ?)',
+  [username, hashedPassword]
+);
 
     const newUser = await db.query('SELECT * FROM User WHERE username = ?', [username]);
-    req.session.user = { userID: newUser[0].userID };
+    req.session.user = { user_id: newUser[0].user_id, username: newUser[0].username };
     res.redirect('/');
   } catch (err) {
     console.error('Signup error:', err);
@@ -107,7 +97,7 @@ router.post('/signin', async (req, res) => {
     }
 
     const user = rows[0];
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
       return res.render('auth/signin', {
         title: 'Sign In',
