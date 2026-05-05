@@ -50,9 +50,9 @@ app.get("/signup", function (req, res) {
 // ==============================
 
 // Existing recipe routes
+app.use('/auth', require('./routes/auth'));
 const recipeRouter = require('./routes/recipe');
 app.use('/recipe', recipeRouter);
-
 app.use('/explore', require('./routes/explore'));
 app.use('/profile', require('./routes/profile'));
 app.use('/posts', require('./routes/posts'));
