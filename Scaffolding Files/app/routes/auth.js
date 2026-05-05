@@ -105,7 +105,7 @@ router.post('/signin', async (req, res) => {
       });
     }
 
-    req.session.user = { user_id: user.userID, username: user.username };
+    req.session.user = { user_id: user.user_id, username: user.username };
     res.redirect('/');
   } catch (err) {
     console.error('Signin error:', err);
