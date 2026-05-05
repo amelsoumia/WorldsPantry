@@ -103,6 +103,7 @@ CREATE TABLE recipe (
     description TEXT,
     instructions TEXT,
     country_id INT,
+    image TEXT,
     FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (country_id) REFERENCES country_category(country_id) ON DELETE SET NULL
 );
@@ -172,9 +173,9 @@ CREATE TABLE review (
 -- ========================
 INSERT INTO country_category (name) VALUES ('Italian');
 INSERT INTO `user` (username, password_hash) VALUES ('jamie_cooks', 'hashedpassword123');
-INSERT INTO recipe (user_id, title, ingredient_list, description, country_id, instructions) 
+INSERT INTO recipe (user_id, title, ingredient_list, description, country_id, image, instructions) 
 VALUES (1, 'Spaghetti Carbonara', 
 '400g spaghetti, 200g guanciale, 4 eggs, 100g Pecorino Romano, black pepper, salt',
 'A classic Roman pasta dish made with eggs, cheese, and guanciale. Rich, creamy and ready in 30 minutes.',
-1, 'Step 1: Boil water and cook pasta, Step 2: Fry guanciale until crispy, Step 3: Mix eggs and cheese, Step 4: Combine and serve');
+1, 'Spagetti_carbonara.jpg', 'Step 1: Boil water and cook pasta, Step 2: Fry guanciale until crispy, Step 3: Mix eggs and cheese, Step 4: Combine and serve');
 

@@ -10,15 +10,13 @@ class Recipe {
 
         const rows = await db.query(`
             SELECT r.recipe_id, r.user_id, r.title, r.ingredient_list,
-                   r.description, r.instructions, r.country_id,
+                   r.description, r.instructions, r.country_id, r.image,
                    u.username,
-                   cc.name AS country_name,
-                   MIN(p.url) AS image_url
+                   cc.name AS country_name
             FROM recipe r
             JOIN \`user\` u ON r.user_id = u.user_id
             LEFT JOIN country_category cc ON r.country_id = cc.country_id
             LEFT JOIN recipephoto rp ON r.recipe_id = rp.recipe_id
-            LEFT JOIN photo p ON rp.photo_id = p.photo_id
             WHERE r.recipe_id = ?
             GROUP BY r.recipe_id`, [this.recipe_id]
         );
