@@ -1,8 +1,10 @@
 // Import express.js
 const express = require("express");
+
+//Import models
 const Category = require('./models/Category');
 const Tag = require('./models/Tag');
-const Recipe = require('./models/Recipe'); // (IMPORTANT: was missing)
+const Recipe = require('./models/Recipe'); 
 
 // Create express app
 var app = express();

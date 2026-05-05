@@ -1,66 +1,66 @@
 // Tag Model
+// Responsible for dietary tags
 // Responsible for: Emmanuel Onyenekwe
 
 const db = require('../services/db');
 
 class Tag {
 
-  // Get all tags
-  static async getAll() {
-    return db.query('SELECT * FROM Tag ORDER BY type ASC, name ASC');
-  }
+    // Get all dietary tags
+    static async getAll() {
 
-  // Get all tags grouped by type (country / dietary)
-  static async getAllGrouped() {
-    const rows = await db.query(
-      'SELECT * FROM Tag ORDER BY type ASC, name ASC'
-    );
-    return {
-      country: rows.filter(t => t.type === 'country'),
-      dietary: rows.filter(t => t.type === 'dietary'),
-    };
-  }
+        return db.query(`
+        SELECT dietary_id, name
+        FROM dietary_category
+        ORDER BY name ASC`
+        );
+    }
 
-  // Get tags with recipe counts
-  static async getAllWithCounts() {
-    return db.query(
-      `SELECT t.tag_id, t.name, t.type, COUNT(rt.recipe_id) AS recipe_count
-       FROM Tag t
-       LEFT JOIN RecipeTag rt ON t.tag_id = rt.tag_id
-       GROUP BY t.tag_id, t.name, t.type
-       ORDER BY t.type ASC, t.name ASC`
-    );
-  }
+    // Get tags with recipe counts
+    static async getAllWithCounts() {
 
-  // Get a single tag by ID
-  static async getById(tagId) {
-    const rows = await db.query(
-      'SELECT * FROM Tag WHERE tag_id = ?',
-      [tagId]
-    );
-    return rows[0] || null;
-  }
+        return db.query(`
+        SELECT dc.dietary_id, dc.name, COUNT(rdt.recipe_id) AS recipe_count
+        FROM dietary_category dc
+        LEFT JOIN recipe_dietary_tags rdt ON dc.dietary_id = rdt.dietary_id
+        GROUP BY dc.dietary_id, dc.name
+        ORDER BY dc.name ASC`
+        );
+    }
 
-  // Get a tag and all its recipes
-  static async getWithRecipes(tagId) {
-    const tagRows = await db.query(
-      'SELECT * FROM Tag WHERE tag_id = ?',
-      [tagId]
-    );
-    if (!tagRows[0]) return null;
+    // Get one tag by ID
+    static async getById(dietaryId) {
 
-    const recipes = await db.query(
-      `SELECT r.*, u.username
-       FROM Recipe r
-       JOIN RecipeTag rt ON r.recipe_id = rt.recipe_id
-       JOIN User u ON r.user_id = u.user_id
-       WHERE rt.tag_id = ?
-       ORDER BY r.created_at DESC`,
-      [tagId]
-    );
+        const rows = await db.query(`
+        SELECT dietary_id, name
+        FROM dietary_category
+        WHERE dietary_id = ?`, [dietaryId]);
 
-    return { ...tagRows[0], recipes };
-  }
+        return rows[0] || null;
+    }
+
+    // Get tag with all its recipes
+    static async getWithRecipes(dietaryId) {
+
+        const tagRows = await db.query(`
+        SELECT dietary_id, name
+        FROM dietary_category
+        WHERE dietary_id = ?`, [dietaryId]
+        );
+
+        if (!tagRows[0]) return null;
+
+        const recipes = await db.query(`
+        SELECT r.*, u.username
+        FROM recipe r
+        JOIN recipe_dietary_tags rdt ON r.recipe_id = rdt.recipe_id
+        JOIN \`user\` u ON r.user_id = u.user_id
+        WHERE rdt.dietary_id = ?
+        ORDER BY r.recipe_id DESC`, [dietaryId]
+        );
+
+        return { ...tagRows[0], recipes };
+    }
 }
 
 module.exports = Tag;

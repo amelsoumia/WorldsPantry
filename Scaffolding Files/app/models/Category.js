@@ -1,54 +1,68 @@
 // Category Model
+// Responsible for country tags
 // Responsible for: Emmanuel Onyenekwe
 
 const db = require('../services/db');
 
 class Category {
 
-  // Get all categories with recipe counts
-  static async getAllWithCounts() {
-    return db.query(
-      `SELECT c.category_id, c.name, COUNT(r.recipe_id) AS recipe_count
-       FROM Category c
-       LEFT JOIN Recipe r ON c.category_id = r.category_id
-       GROUP BY c.category_id, c.name
-       ORDER BY c.name ASC`
-    );
-  }
+    // Get all categories  
+    static async getAll() {
 
-  // Get a single category by ID
-  static async getById(categoryId) {
-    const rows = await db.query(
-      'SELECT * FROM Category WHERE category_id = ?',
-      [categoryId]
-    );
-    return rows[0] || null;
-  }
+        return db.query(`
+        SELECT country_id, name
+        FROM country_category
+        ORDER BY name ASC`
+        );
+    }
 
-  // Get a category and all its recipes
-  static async getWithRecipes(categoryId) {
-    const categoryRows = await db.query(
-      'SELECT * FROM Category WHERE category_id = ?',
-      [categoryId]
-    );
-    if (!categoryRows[0]) return null;
+    // Get all categories with recipe counts
+    static async getAllWithCounts() {
 
-    const recipes = await db.query(
-      `SELECT r.*, u.username
-       FROM Recipe r
-       JOIN User u ON r.user_id = u.user_id
-       WHERE r.category_id = ?
-       ORDER BY r.created_at DESC`,
-      [categoryId]
-    );
+        return db.query(`
+            SELECT c.country_id, c.name, COUNT(r.recipe_id) AS recipe_count
+            FROM country_category c
+            LEFT JOIN recipe r ON c.country_id = r.country_id
+            GROUP BY c.country_id, c.name
+            ORDER BY c.name ASC
+        `);
+    }
 
-    return { ...categoryRows[0], recipes };
-  }
+    // Get a single category by ID
+    static async getById(countryId) {
 
-  // Get all categories (simple list)
-  static async getAll() {
-    return db.query('SELECT * FROM Category ORDER BY name ASC');
-  }
+        const rows = await db.query(
+            `SELECT country_id, name
+            FROM country_category
+            WHERE country_id = ?`,
+            [countryId]
+        );
+
+        return rows[0] || null;
+    }
+
+    // Get a category and all its recipes
+    static async getWithRecipes(countryId) {
+
+        const categoryRows = await db.query(`
+            SELECT country_id, name
+            FROM country_category
+            WHERE country_id = ?
+        `, [countryId]);
+
+        if (!categoryRows[0]) return null;
+
+        const recipes = await db.query(`
+            SELECT r.*, u.username
+            FROM recipe r
+            JOIN \`user\` u ON r.user_id = u.user_id
+            WHERE r.country_id = ?
+            ORDER BY r.recipe_id DESC
+        `, [countryId]);
+
+        return { ...categoryRows[0], recipes };
+
+    }
 }
 
 module.exports = Category;

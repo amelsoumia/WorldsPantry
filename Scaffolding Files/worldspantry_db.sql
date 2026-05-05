@@ -7,9 +7,9 @@
 -- Server version: 8.0.24
 -- PHP Version: 7.4.20
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,7 +25,7 @@ CREATE DATABASE IF NOT EXISTS worldspantry_db;
 USE worldspantry_db;
 
 -- =========================
--- USER
+-- USER TABLE
 -- =========================
 CREATE TABLE `user` (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,41 +35,11 @@ CREATE TABLE `user` (
 );
 
 -- =========================
--- PREFERENCES
--- =========================
-CREATE TABLE preferences (
-    preference_id INT AUTO_INCREMENT PRIMARY KEY,
-    description VARCHAR(255) NOT NULL
-);
-
--- =========================
--- USER_PREFERENCE
--- =========================
-CREATE TABLE user_preference (
-    user_id INT NOT NULL,
-    preference_id INT NOT NULL,
-    PRIMARY KEY (user_id, preference_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (preference_id) REFERENCES preferences(preference_id) ON DELETE CASCADE
-);
-
--- =========================
 -- PHOTO
 -- =========================
 CREATE TABLE photo (
     photo_id INT AUTO_INCREMENT PRIMARY KEY,
     url TEXT NOT NULL
-);
-
--- =========================
--- USER PROFILE
--- =========================
-CREATE TABLE user_profile (
-    profile_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL UNIQUE,
-    photo_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (photo_id) REFERENCES photo(photo_id) ON DELETE SET NULL
 );
 
 -- =========================
@@ -89,6 +59,40 @@ CREATE TABLE dietary_category (
 );
 
 -- =========================
+-- USER PROFILE
+-- =========================
+CREATE TABLE user_profile (
+    profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL UNIQUE,
+    photo_id INT,
+    bio TEXT,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (photo_id) REFERENCES photo(photo_id) ON DELETE SET NULL
+);
+
+-- =========================
+-- DIETARY PREFERENCE TABLE
+-- =========================
+CREATE TABLE dietary_preference (
+    user_id INT NOT NULL,
+    dietary_id INT NOT NULL,
+    PRIMARY KEY (user_id, dietary_id),
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (dietary_id) REFERENCES dietary_category(dietary_id) ON DELETE CASCADE
+);
+
+-- =========================
+-- COUNTRY PREFERENCE TABLE
+-- =========================
+CREATE TABLE country_preference (
+    user_id INT NOT NULL,
+    country_id INT NOT NULL,
+    PRIMARY KEY (user_id, country_id),
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (country_id) REFERENCES country_category(country_id) ON DELETE CASCADE
+);
+
+-- =========================
 -- RECIPE
 -- =========================
 CREATE TABLE recipe (
@@ -99,7 +103,7 @@ CREATE TABLE recipe (
     description TEXT,
     instructions TEXT,
     country_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (country_id) REFERENCES country_category(country_id) ON DELETE SET NULL
 );
 
@@ -132,7 +136,7 @@ CREATE TABLE `like` (
     user_id INT NOT NULL,
     recipe_id INT NOT NULL,
     PRIMARY KEY (user_id, recipe_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON DELETE CASCADE
 );
 
@@ -143,7 +147,7 @@ CREATE TABLE save (
     user_id INT NOT NULL,
     recipe_id INT NOT NULL,
     PRIMARY KEY (user_id, recipe_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON DELETE CASCADE
 );
 
@@ -157,12 +161,14 @@ CREATE TABLE review (
     rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
     comment TEXT,
     UNIQUE (user_id, recipe_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON DELETE CASCADE
 );
 
+
+
 -- ========================
--- RECIPE INPUT
+-- RECIPE INPUTS
 -- ========================
 INSERT INTO country_category (name) VALUES ('Italian');
 INSERT INTO `user` (username, password_hash) VALUES ('jamie_cooks', 'hashedpassword123');

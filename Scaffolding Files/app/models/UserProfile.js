@@ -1,12 +1,11 @@
 // Stores user profile information
 class UserProfile {
-    constructor(profileID, userID, bio, profileImage, dietaryPreferences) {
+    constructor(profileID, userID, bio= null, profileImage= null) {
 
         this.profileID = profileID;
         this.userID = userID;
         this.bio = bio;
         this.profileImage = profileImage;
-        this.dietaryPreferences = dietaryPreferences;
     }
 
     getProfileID() {
@@ -23,10 +22,6 @@ class UserProfile {
 
     getProfileImage() {
         return this.profileImage;
-    }
-
-    getDietaryPreferences() {
-        return this.dietaryPreferences;
     }
 
 }

@@ -30,6 +30,7 @@ class SavedRecipe {
       FROM save s
       JOIN recipe r ON s.recipe_id = r.recipe_id
       WHERE s.user_id = ?
+      ORDER BY r.recipe_id DESC
     `;
     return await db.query(sql, [userId]);
   }

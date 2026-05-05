@@ -1,103 +1,149 @@
 const db = require('../services/db');
 
 class Recipe {
-    recipe_id;
-    user_id;
-    title;
-    description;
-    ingredients;
-    instructions;
-    cook_time;
-    servings;
-    image;
-
-    constructor (recipe_id){
-        this.recipe_id    = recipe_id;
+    constructor(recipe_id) {
+        this.recipe_id = recipe_id;
     }
 
+    // Fetches all recipe information for one recipe
     async getRecipeData() {
-        const sql = `SELECT recipe_id, user_id, title, ingredient_list, description, instructions, country_id
-             FROM recipe 
-             WHERE recipe_id = ?`;
-        const results = await db.query(sql, [this.recipe_id]);
-    
-        if (results.length === 0) return null;
-    
-        this.user_id         = results[0].user_id;
-        this.title           = results[0].title;
-        this.ingredient_list = results[0].ingredient_list;
-        this.description     = results[0].description;
-        this.instructions = results[0].instructions;
-        this.country_id      = results[0].country_id;
+
+        const rows = await db.query(`
+            SELECT r.recipe_id, r.user_id, r.title, r.ingredient_list,
+                   r.description, r.instructions, r.country_id,
+                   u.username,
+                   cc.name AS country_name,
+                   MIN(p.url) AS image_url
+            FROM recipe r
+            JOIN \`user\` u ON r.user_id = u.user_id
+            LEFT JOIN country_category cc ON r.country_id = cc.country_id
+            LEFT JOIN recipephoto rp ON r.recipe_id = rp.recipe_id
+            LEFT JOIN photo p ON rp.photo_id = p.photo_id
+            WHERE r.recipe_id = ?
+            GROUP BY r.recipe_id`, [this.recipe_id]
+        );
+
+        if (rows.length === 0) return null;
+
+        Object.assign(this, rows[0]);
+        this.dietary_tags = await Recipe.getDietaryTags(this.recipe_id);
+
+        return this;
     }
 
-    async getRecipeTitle() {
-        if (typeof this.title !== 'string') {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.title = results[0].title;
-        }
-    }
-    
-    async getRecipeDescription()  {
-        if(typeof this.description !== description) {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.description = results[0].description;
-        }
-    }
-    
-    async getRecipeUserId() {
-        if(typeof this.user_id !== this.user_id) {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.user_id= results[0].user_id;
-        }
+    // Fetches all recipe information for all recipes
+    static async getAllWithDetails() {
+
+        const recipes = await db.query(`
+            SELECT r.recipe_id, r.user_id, r.title, r.ingredient_list,
+                   r.description, r.instructions, r.country_id,
+                   u.username,
+                   cc.name AS country_name,
+                   MIN(p.url) AS image_url
+            FROM recipe r
+            JOIN \`user\` u ON r.user_id = u.user_id
+            LEFT JOIN country_category cc ON r.country_id = cc.country_id
+            LEFT JOIN recipephoto rp ON r.recipe_id = rp.recipe_id
+            LEFT JOIN photo p ON rp.photo_id = p.photo_id
+            GROUP BY r.recipe_id
+            ORDER BY r.recipe_id DESC`
+        );
+
+        return await Recipe.attachDietaryTags(recipes);
     }
 
-    async getRecipeIngredients() {
-        if(typeof this.ingredients !== this.ingredients) {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.ingredients= results[0].ingredients;
+    // Filters recipes based on search and tags
+    static async searchAndFilter(search, countryId, dietaryIds = []) {
+
+        let sql = `
+            SELECT DISTINCT r.recipe_id, r.user_id, r.title, r.ingredient_list,
+                   r.description, r.instructions, r.country_id,
+                   u.username,
+                   cc.name AS country_name,
+                   MIN(p.url) AS image_url
+            FROM recipe r
+            JOIN \`user\` u ON r.user_id = u.user_id
+            LEFT JOIN country_category cc ON r.country_id = cc.country_id
+            LEFT JOIN recipe_dietary_tags rdt ON r.recipe_id = rdt.recipe_id
+            LEFT JOIN recipephoto rp ON r.recipe_id = rp.recipe_id
+            LEFT JOIN photo p ON rp.photo_id = p.photo_id
+            WHERE 1 = 1
+        `;
+
+        const params = [];
+
+        if (search) {
+            sql += `
+                AND (
+                    r.title LIKE ?
+                    OR r.description LIKE ?
+                    OR r.ingredient_list LIKE ?
+                )
+            `;
+            params.push(`%${search}%`, `%${search}%`, `%${search}%`);
         }
-    }
-    
-    async getRecipeCookTime() {
-        if(typeof this.cook_time !== this.cook_time) {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.cook_time= results[0].cook_time;
+
+        if (countryId) {
+
+            sql += ` AND r.country_id = ?`;
+            params.push(countryId);
         }
+
+        if (dietaryIds.length > 0) {
+
+            sql += ` AND rdt.dietary_id IN (${dietaryIds.map(() => '?').join(',')})`;
+            params.push(...dietaryIds);
+        }
+
+        sql += `
+            GROUP BY r.recipe_id
+            ORDER BY r.recipe_id DESC
+        `;
+
+        const recipes = await db.query(sql, params);
+        return await Recipe.attachDietaryTags(recipes);
     }
 
-    async getRecipeServings() {
-        if(typeof this.servings !== this.servings) {
-            var sql = "SELECT  from  where id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.servings= results[0].servings;
-        }
+    // Helper function to get dietary tags for a recipe
+    static async getDietaryTags(recipeId) {
+
+        return db.query(`
+            SELECT dc.dietary_id, dc.name
+            FROM recipe_dietary_tags rdt
+            JOIN dietary_category dc ON rdt.dietary_id = dc.dietary_id
+            WHERE rdt.recipe_id = ?
+            ORDER BY dc.name ASC`, [recipeId]
+        );
     }
 
-    // async getRecipeImage() {
-    //     var sql = "SELECT * FROM Programme_Modules pm \
-    //     JOIN Modules m on m.code = pm.module \
-    //     WHERE programme = ?";
-    //     const results = await db.query(sql, [this.programme.id]);
-    //     for(var row of results) {
-    //         this.modules.push(new Module(row.code, row.name));
-    //     }
-    // }
+    // Helper function that loops through fetched recipes and adds their dietary tags from the database
+    static async attachDietaryTags(recipes) {
 
-    // Get all recipes created by a specific user
+        for (const recipe of recipes) {
+            recipe.dietary_tags = await Recipe.getDietaryTags(recipe.recipe_id);
+        }
+
+        return recipes;
+    }
+
+    // Returns all recipes created by a user
     static async getByUser(userId) {
-        const sql = `
+
+        return db.query(`
             SELECT recipe_id, title, description
             FROM recipe
             WHERE user_id = ?
-        `;
-        return await db.query(sql, [userId]);
+            ORDER BY recipe_id DESC`, [userId]
+        );
     }
 
+    // Delete recipe only if it belongs to the logged-in user
+    static async deleteRecipe(recipeId, userId) {
+        return db.query(`
+        DELETE FROM recipe
+        WHERE recipe_id = ? AND user_id = ?
+    `, [recipeId, userId]);
+    }
 }
-module.exports = { Recipe };
+
+module.exports = Recipe;
