@@ -64,7 +64,7 @@ app.get('/explore', async (req, res) => {
 // ==============================
 
 // Existing recipe routes
-const recipeRouter = require('./services/recipe');
+const recipeRouter = require('./routes/recipe');
 app.use('/', recipeRouter);
 
 // YOUR routes (profile + settings)
