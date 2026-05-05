@@ -1,10 +1,6 @@
 // Import express.js
 const express = require("express");
-
-//Import models
-const Category = require('./models/Category');
-const Tag = require('./models/Tag');
-const Recipe = require('./models/Recipe'); 
+const session = require('express-session');
 
 // Create express app
 var app = express();
@@ -21,6 +17,12 @@ app.set('views', './app/views');
 
 // Get the database connection
 const db = require('./services/db');
+
+app.use(session({
+    secret: 'worldspantry-secret',
+    resave: false,
+    saveUninitialized: false
+}));
 
 
 // ==============================
@@ -42,34 +44,18 @@ app.get("/signup", function (req, res) {
     res.render('signup', { formData: {} });
 });
 
-// Explore page
-app.get('/explore', async (req, res) => {
-
-    const categories = await Category.getAllWithCounts();
-    const countryTags = await Tag.getCountryTags();
-    const dietaryTags = await Tag.getDietaryTags();
-    const allRecipes = await Recipe.getAllForBrowse();
-
-    res.render('explore-page', {
-        categories,
-        countryTags,
-        dietaryTags,
-        allRecipes
-    });
-});
-
 
 // ==============================
 // ROUTERS (TEAM STRUCTURE)
 // ==============================
 
 // Existing recipe routes
-const recipeRouter = require('./services/recipe');
-app.use('/', recipeRouter);
+const recipeRouter = require('./routes/recipe');
+app.use('/recipe', recipeRouter);
 
-// YOUR routes (profile + settings)
-app.use('/', require('./routes/profile'));
-app.use('/', require('./routes/posts'));
+app.use('/explore', require('./routes/explore'));
+app.use('/profile', require('./routes/profile'));
+app.use('/posts', require('./routes/posts'));
 
 // ==============================
 // START SERVER

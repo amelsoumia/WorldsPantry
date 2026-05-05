@@ -1,21 +1,25 @@
 //- Recipe preview cards to be displayed in browsing page
 
-if recipes.length === 0
+
+if !recipes || recipes.length === 0
   p There are currently no recipes.
 
 else
   .recipes
     each recipe in recipes
-
       article
-        if recipe.image
-          img(src=recipe.image, alt=recipe.title)
-
+        if recipe.image_url
+          img(src=recipe.image_url, alt=recipe.title)
         else
-          img(src="/images/default-recipe-image", alt="Default Recipe Image")
+          img(src="/images/default-recipe-image.jpg", alt="Default Recipe Image")
 
         h3
-          a(href=`/recipes/${recipe.recipe_id}`)= recipe.title
+          a(href=`/recipe/${recipe.recipe_id}`)= recipe.title
 
-        p= recipe.country || 'International'
+        p= recipe.country_name || 'International'
         p by #{recipe.username}
+
+        if recipe.dietary_tags && recipe.dietary_tags.length
+          ul
+            each dietary in recipe.dietary_tags
+              li= dietary.name
