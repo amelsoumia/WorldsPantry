@@ -30,33 +30,21 @@ app.use((req, res, next) => {
 });
 
 // ==============================
-// ROUTES
+// DIRECT ROUTE (ROOT)
 // ==============================
 
 // Home page
 app.get("/", function(req, res) {
-    res.render('index');
+    res.render('index', {
+        user: req.session.user || null
+    });
 });
-
-// Login page
-app.get("/login", function (req, res) {
-    res.render('signin');
-});
-
-// Signup page
-app.get("/signup", function (req, res) {
-    res.render('signup', { formData: {} });
-});
-
 
 // ==============================
-// ROUTERS (TEAM STRUCTURE)
+// LOAD ROUTERS
 // ==============================
-
-// Existing recipe routes
 app.use('/auth', require('./routes/auth'));
-const recipeRouter = require('./routes/recipe');
-app.use('/recipe', recipeRouter);
+app.use('/recipe', require('./routes/recipe'));
 app.use('/explore', require('./routes/explore'));
 app.use('/profile', require('./routes/profile'));
 app.use('/posts', require('./routes/posts'));
@@ -64,7 +52,6 @@ app.use('/posts', require('./routes/posts'));
 // ==============================
 // START SERVER
 // ==============================
-
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
 });
