@@ -47,7 +47,7 @@ app.use('/auth', require('./routes/auth'));
 app.use('/recipe', require('./routes/recipe'));
 app.use('/explore', require('./routes/explore'));
 app.use('/profile', require('./routes/profile'));
-app.use('/posts', require('./routes/posts'));
+app.use('/', require('./routes/posts'));
 
 // ==============================
 // START SERVER
