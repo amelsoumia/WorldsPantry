@@ -27,12 +27,13 @@ html(lang="en")
             button(type="submit") Search
 
         .nav-right
-          if user
-            a(href="/profile")
-              if userProfile && userProfile.profileImage
-                img(src=userProfile.profileImage, alt="Profile Picture")
-              else
-                img(src="/images/default-user-icon.png", alt="Profile Picture")
+  if user
+    a(href="/profile")
+      img(src="/images/default-user-icon.png", alt="Profile")
+    a(href="/auth/signout") Log out
+  else
+    a(href="/login") Sign In
+    a(href="/auth/signup") Sign Up
 
           else
             a(href="/auth/signin")
