@@ -12,6 +12,7 @@ block content
     //- Recipes this user created
     .profile-section
       h2 My Recipes
+      a(href="/recipe/create") + Add Recipe
       if createdRecipes.length === 0
         p You haven't posted any recipes yet.
       else
