@@ -40,6 +40,9 @@ app.get("/", function(req, res) {
     });
 });
 
+app.get("/login", (req, res) => res.render('signin', { error: null }));
+app.get("/signup", (req, res) => res.render('signup', { formData: {}, error: null }));
+
 // ==============================
 // LOAD ROUTERS
 // ==============================
