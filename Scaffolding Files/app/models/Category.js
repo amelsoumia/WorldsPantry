@@ -57,7 +57,7 @@ class Category {
             FROM recipe r
             JOIN \`user\` u ON r.user_id = u.user_id
             WHERE r.country_id = ?
-            ORDER BY r.recipe_id DESC
+            ORDER BY r.name ASC
         `, [countryId]);
 
         return { ...categoryRows[0], recipes };

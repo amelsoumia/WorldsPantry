@@ -1,6 +1,7 @@
+// Code runs from here 
+// Loads express app from app.js
+
 "use strict";
 
-// Include the app.js file.
-// This will run the code.
-console.log("entrypoint");
+console.log("Entrypoint");
 const app = require("./app/app.js");

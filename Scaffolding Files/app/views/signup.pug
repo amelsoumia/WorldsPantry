@@ -16,8 +16,9 @@ block content
           input#username(type="text" name="username" placeholder="e.g. chef_amina" value=formData.username || '' required)
 
         .form-group
-          label(for="password") Password
-            span.label-hint  (min. 8 characters)
+          label(for="password")
+            | Password 
+            span.label-hint (min. 8 characters)
           input#password(type="password" name="password" placeholder="Create a strong password" required)
 
         .form-group
@@ -28,4 +29,4 @@ block content
 
       .auth-footer
         p Already have an account?
-          a(href="/auth/signin")  Sign in here
+          a(href="/auth/signin") Sign in here

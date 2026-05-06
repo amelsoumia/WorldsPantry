@@ -7,9 +7,9 @@
 -- Server version: 8.0.24
 -- PHP Version: 7.4.20
 
-SET SQL_MODE "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone "+00:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -168,13 +168,62 @@ CREATE TABLE review (
 
 
 -- ========================
--- RECIPE INPUTS
+-- INPUTS
 -- ========================
-INSERT INTO country_category (name) VALUES ('Italian');
-INSERT INTO `user` (username, password_hash) VALUES ('jamie_cooks', 'hashedpassword123');
+
+INSERT INTO `user` (username, password_hash) VALUES
+('testuser', '$2a$10$e2j7WzIGw4Ig/rNZMCADW.b6C/A0vXvzCMaTFhONxTMraI95USMMS'); 
+
+INSERT INTO dietary_category (name) VALUES
+('Halal'),
+('Vegan'),
+('Gluten-Free'),
+('Vegetarian'),
+('Dairy-Free'),
+('Nut-Free');
+
+INSERT INTO country_category (name) VALUES
+('Italy'),
+('Lebanon'),
+('India'),
+('Mexico'),
+('Japan'),
+('France'),
+('Thailand'),
+('China'),
+('Greece'),
+('Spain'),
+('Morocco');
+
 INSERT INTO recipe (user_id, title, ingredient_list, description, country_id, instructions) 
 VALUES (1, 'Spaghetti Carbonara', 
 '400g spaghetti, 200g guanciale, 4 eggs, 100g Pecorino Romano, black pepper, salt',
 'A classic Roman pasta dish made with eggs, cheese, and guanciale. Rich, creamy and ready in 30 minutes.',
 1, 'Step 1: Boil water and cook pasta, Step 2: Fry guanciale until crispy, Step 3: Mix eggs and cheese, Step 4: Combine and serve');
 
+INSERT INTO recipe (user_id, title, ingredient_list, description, country_id, instructions) 
+VALUES (1, 'Chicken Shawarma', 
+'500g chicken thighs, 3 tbsp yogurt, 2 tbsp lemon juice, 3 garlic cloves, 2 tsp cumin, 2 tsp paprika, 1 tsp turmeric, salt, pepper, pita bread',
+'A flavorful Middle Eastern street food made with marinated chicken, grilled and served in warm pita bread.',
+2, 'Step 1: Marinate chicken with spices and yogurt, Step 2: Let it rest for at least 1 hour, Step 3: Cook chicken in pan or grill, Step 4: Slice and serve in pita');
+
+INSERT INTO recipe (user_id, title, ingredient_list, description, country_id, instructions) 
+VALUES (1, 'Chicken Tikka Masala', 
+'500g chicken breast, 200ml yogurt, 2 tbsp garam masala, 1 onion, 3 garlic cloves, 1 tbsp ginger, 400g tomato sauce, 100ml cream, salt',
+'A popular Indian curry featuring grilled chicken pieces in a creamy, spiced tomato sauce.',
+3, 'Step 1: Marinate chicken in yogurt and spices, Step 2: Cook chicken until slightly charred, Step 3: Prepare sauce with onion, garlic, and tomato, Step 4: Add chicken and cream, simmer and serve');
+
+-- Chicken Shawarma → Halal + Dairy-Free (multiple tags)
+INSERT INTO recipe_dietary_tags (recipe_id, dietary_id) VALUES
+(2, 1), -- Halal
+(2, 5); -- Dairy-Free
+
+
+-- Chicken Tikka Masala → Halal
+INSERT INTO recipe_dietary_tags (recipe_id, dietary_id) VALUES
+(3, 1);
+
+
+-- Spaghetti Carbonara → Nut-Free
+INSERT INTO recipe_dietary_tags (recipe_id, dietary_id) VALUES
+(1, 6);

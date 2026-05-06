@@ -13,7 +13,7 @@ block content
       form.auth-form(action="/auth/signin" method="POST")
         .form-group
           label(for="username") Username
-input#username(type="text" name="username" placeholder="Your username" required)
+          input#username(type="text" name="username" placeholder="Your username" required)
 
         .form-group
           label(for="password") Password
@@ -23,4 +23,4 @@ input#username(type="text" name="username" placeholder="Your username" required)
 
       .auth-footer
         p Don't have an account?
-          a(href="/signup")  Join for free
+          a(href="/auth/signup") Join for free
