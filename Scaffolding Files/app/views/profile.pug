@@ -8,7 +8,7 @@ block content
       img(src="/images/default-user-icon.png" alt="Profile Picture")
       h1= profileUser.username
       p Member since #{new Date(profileUser.join_date).toLocaleDateString()}
-      a(href="/settings") Settings
+      a(href="/profile/settings") Settings
 
     //- Recipes this user created
     .profile-section
