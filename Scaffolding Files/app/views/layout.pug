@@ -27,17 +27,13 @@ html(lang="en")
             button(type="submit") Search
 
         .nav-right
-  if user
-    a(href="/profile")
-      img(src="/images/default-user-icon.png", alt="Profile")
-    a(href="/auth/signout") Log out
-  else
-    a(href="/login") Sign In
-    a(href="/auth/signup") Sign Up
-
+          if user
+            a(href="/profile")
+              img(src="/images/default-user-icon.png", alt="Profile")
+            a(href="/auth/signout") Log out
           else
-            a(href="/auth/signin")
-              img(src="/images/default-user-icon.png", alt="Login")
+            a(href="/login") Sign In
+            a(href="/auth/signup") Sign Up
 
     main
       block content
