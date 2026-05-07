@@ -66,16 +66,14 @@ World's Pantry is a full-stack web application built for the Software Engineerin
 
 | Member | Role |
 |--------|------|
-| Amina | |
-| Amel | |
-| Pooji | |
-| Emmanuel | |
+| Amina |Web Designer |
+| Amel |Software Developer |
+| Pooji |Software Developer |
+| Emmanuel |Software Developer |
 
 ## Project Status
 
-✅ **Completed:** Sprint 1, 2 & 3
-
-🚀 **Current Sprint:** Sprint 4
+✅ **Completed:** Sprints 1, 2, 3 & 4
 
 ## Acknowledgements
 
