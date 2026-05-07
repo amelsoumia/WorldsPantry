@@ -90,12 +90,31 @@ nav {
 }
 
 .categories {
-    display:flex;
+    display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    flex-wrap: wrap;
 }
 
-Login page styling 
+.category-btn {
+    text-decoration: none;
+    color: #555;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.category-btn:hover {
+    background: #6a4a47;
+    color: white;
+    border-color: #6a4a47;
+}
+
+/* Login page styling */
 .auth-page {
     display: flex;
     justify-content: center;
@@ -191,12 +210,118 @@ Login page styling
     font-size: 0.875rem;
 }
 
-.recipes {
+/* explore page */
+
+.browse-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+aside {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+}
+
+main h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+aside form {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+aside h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+aside h2:first-child {
+    margin-top: 0;
+}
+
+aside select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #555;
+    background: white;
+    outline: none;
+    cursor: pointer;
+}
+
+aside select:focus {
+    border-color: #6a4a47;
+}
+
+aside label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+    padding: 0.3rem 0;
+    cursor: pointer;
+}
+
+aside label:hover {
+    color: #1a1a1a;
+}
+
+aside input[type="checkbox"] {
+    accent-color: #6a4a47;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+aside button[type="submit"] {
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.65rem;
+    background: #6a4a47;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+aside button[type="submit"]:hover {
+    background: #3b2f1e;
+}
+
+
+/* recipe card */
+.home-grid .recipes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    justify-content: center;
     padding: 2rem;
+}
+
+main .recipes {
+    display: flex;
+    
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0;
 }
 
 .recipe-card {
@@ -361,4 +486,326 @@ Login page styling
     height: 1px;
     background: linear-gradient(to right, #ccc, transparent);
     margin: 1.5rem 0;
+}
+
+/* profile page */
+
+.profile-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+.profile-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #6a4a47;
+}
+
+.profile-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.profile-header p {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.profile-header a {
+    background: #6a4a47;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+}
+
+.profile-header a:hover {
+    background: #3b2f1e;
+}
+
+.profile-section {
+    margin-bottom: 2.5rem;
+}
+
+.profile-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0ebe0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-section h2 + a {
+    font-size: 0.875rem;
+    color: #6a4a47;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profile-section h2 + a:hover {
+    text-decoration: underline;
+}
+
+.profile-section > p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.recipe-grid .recipe-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.recipe-grid .recipe-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.recipe-grid .recipe-card h3 a {
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: color 0.2s;
+}
+
+.recipe-grid .recipe-card h3 a:hover {
+    color: #6a4a47;
+}
+
+.recipe-grid .recipe-card p {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.recipe-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.recipe-card-actions a {
+    background: #f0ebe0;
+    color: #6a4a47;
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.recipe-card-actions a:hover {
+    background: #6a4a47;
+    color: white;
+}
+
+.recipe-card-actions button,
+.recipe-grid .recipe-card form button {
+    background: #fff0f0;
+    color: #c00;
+    border: none;
+    padding: 0.35rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.recipe-card-actions button:hover,
+.recipe-grid .recipe-card form button:hover {
+    background: #c00;
+    color: white;
+}
+
+/* Settings */
+.profile-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-page h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #f0ebe0;
+}
+
+.profile-page form {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.username-label,
+.bio-label,
+.password-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.username-label label,
+.bio-label label,
+.password-label label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.username-label input,
+.password-label input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.username-label input:focus,
+.password-label input:focus {
+    border-color: #6a4a47;
+}
+
+.bio-label textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.bio-label textarea:focus {
+    border-color: #6a4a47;
+}
+
+
+.country-preferences-section,
+.dietary-preferences-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.country-preferences-section h2,
+.dietary-preferences-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.country-preferences-section label,
+.dietary-preferences-section label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.country-preferences-section label:hover,
+.dietary-preferences-section label:hover {
+    color: #1a1a1a;
+}
+
+.country-preferences-section input[type="checkbox"],
+.dietary-preferences-section input[type="checkbox"] {
+    accent-color: #6a4a47;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    padding: 0.75rem;
+    background: #6a4a47;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #3b2f1e;
+}
+
+.profile-page > a {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #c00;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.profile-page > a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.alert-error {
+    background: #fff0f0;
+    color: #c00;
+    border: 1px solid #f5c0c0;
+}
+
+.alert-success {
+    background: #f0fff4;
+    color: #2d6a4f;
+    border: 1px solid #b7e4c7;
 }
