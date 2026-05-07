@@ -34,10 +34,22 @@ app.use((req, res, next) => {
 // ==============================
 
 // Home page
-app.get("/", function(req, res) {
-    res.render('index', {
-        user: req.session.user || null
-    });
+const Recipe = require('./models/Recipe');
+const Tag = require('./models/Tag');
+
+app.get("/", async (req, res) => {
+    try {
+        const recipes = await Recipe.searchAndFilter('', '', []);
+        const dietaryTags = await Tag.getAll();
+        res.render('index', {
+            user: req.session.user || null,
+            recipes: recipes.slice(0, 6),
+            dietaryTags
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error loading home page');
+    }
 });
 
 app.get("/login", (req, res) => res.render('signin', { error: null }));

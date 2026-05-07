@@ -7,9 +7,8 @@ block content
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 
   section.categories
-    button Gluten-free
-    button Vegan
-    button Vegetarian
-    button Halal
-    button Dairy-free
+    each tag in dietaryTags
+      a.category-btn(href=`/explore?dietary=${tag.dietary_id}`)= tag.name
   
+  section.recipe-cards 
+    include _recipe-card.pug

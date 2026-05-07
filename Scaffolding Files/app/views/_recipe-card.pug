@@ -7,19 +7,30 @@ if !recipes || recipes.length === 0
 else
   .recipes
     each recipe in recipes
-      article
-        if recipe.image_url
-          img(src=recipe.image_url, alt=recipe.title)
-        else
-          img(src="/images/default-recipe-image.jpg", alt="Default Recipe Image")
+      .recipe-card
+        .card-img-wrap
+          if recipe.image_url
+            img(src=recipe.image_url, alt=recipe.title)
+          else
+            img(src="/images/default-recipe-image.jpg", alt="Default Recipe Image")
+          .card-actions
+              button.like ♥
+              button.save ⊞
 
-        h3
-          a(href=`/recipe/${recipe.recipe_id}`)= recipe.title
+        .card-body
+          .card-meta
+            .avatar
+              img(src="/images/default-user-icon.png" alt=recipe.username)
+            span= recipe.username
 
-        p= recipe.country_name || 'International'
-        p by #{recipe.username}
+          h3
+            a(href=`/recipe/${recipe.recipe_id}`)= recipe.title
 
-        if recipe.dietary_tags && recipe.dietary_tags.length
-          ul
-            each dietary in recipe.dietary_tags
-              li= dietary.name
+          p= recipe.country_name || 'International'
+          p by #{recipe.username}
+
+          if recipe.dietary_tags && recipe.dietary_tags.length
+            ul.tags
+              each dietary in recipe.dietary_tags
+                li= dietary.name
+              
