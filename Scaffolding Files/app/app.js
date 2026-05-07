@@ -52,17 +52,14 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.get("/login", (req, res) => res.render('signin', { error: null }));
-app.get("/signup", (req, res) => res.render('signup', { formData: {}, error: null }));
-
 // ==============================
 // LOAD ROUTERS
 // ==============================
 app.use('/auth', require('./routes/auth'));
-app.use('/recipe', require('./routes/recipe'));
 app.use('/explore', require('./routes/explore'));
 app.use('/profile', require('./routes/profile'));
 app.use('/', require('./routes/posts'));
+app.use('/recipe', require('./routes/recipe'));
 
 // ==============================
 // START SERVER

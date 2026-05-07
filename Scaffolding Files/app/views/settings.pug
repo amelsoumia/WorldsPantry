@@ -4,15 +4,38 @@ block content
   .profile-page
     h1 Settings
 
-    form(method="post" action="/settings")
-      .form-group
-        label Username:
-        input(type="text", name="username")
+    if error
+      .alert.alert-error= error
+    if success
+      .alert.alert-success= success
 
-      .form-group
-        label Password:
-        input(type="password", name="password")
+    form(method='POST' action='/profile/settings')
+      .username-label
+        label(for='username') Username
+        input#username(type='text' name='username' value=user.username required)
 
-      button.btn-submit(type="submit") Save Changes
+      .bio-label
+        label(for='bio') Bio
+        textarea#bio(name='bio' rows='4')= profile && profile.bio || ''
 
-    a(href="/auth/signout") Log Out
+      .password-label
+        label(for='password') New Password
+        input#password(type='password' name='password' placeholder='Leave blank to keep current password')
+
+      .country-preferences-section
+        h2 Country Preferences
+        each country in countries
+          label
+            input(type='checkbox' name='country_ids' value=country.country_id checked=selectedCountries.includes(String(country.country_id)))
+            | #{country.name}
+
+      .dietary-preferences-section
+        h2 Dietary Preferences
+        each dietary in dietaryTags
+          label
+            input(type='checkbox' name='dietary_ids' value=dietary.dietary_id checked=selectedDietary.includes(String(dietary.dietary_id)))
+            | #{dietary.name}
+
+      button.btn-submit(type='submit') Save Changes
+
+    a(href='/auth/signout') Log Out
