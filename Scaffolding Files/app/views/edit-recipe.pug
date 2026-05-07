@@ -30,7 +30,30 @@ block content
         select#country_id(name="country_id")
           option(value="") — Select a country —
           each country in countries
-            option(value=country.country_id selected=country.country_id === recipe.country_id)= country.name
+            option(
+              value=country.country_id
+              selected=String(country.country_id) === String(recipe.country_id)
+            )= country.name
+
+      .form-group
+        label Dietary Tags
+        each tag in dietaryTags
+          label
+            input(
+              type="checkbox"
+              name="dietary_ids"
+              value=tag.dietary_id
+              checked=selectedDietary.includes(String(tag.dietary_id))
+            )
+            | #{tag.name}
+
+      .form-group
+        label(for="image_url") Recipe Image URL / Path
+        input#image_url(
+          type="text"
+          name="image_url"
+          value=recipe.image_url || ''
+        )
 
       .form-actions
         button.btn-submit(type="submit") Save Changes

@@ -6,6 +6,38 @@ const express = require('express');
 const router = express.Router();
 const db = require('../services/db');
 
+function normaliseArray(value) {
+    if (!value) return [];
+    return Array.isArray(value) ? value : [value];
+}
+
+async function setRecipeDietaryTags(recipeId, dietaryIds) {
+    await db.query('DELETE FROM recipe_dietary_tags WHERE recipe_id = ?', [recipeId]);
+
+    for (const dietaryId of dietaryIds) {
+        await db.query(
+            'INSERT INTO recipe_dietary_tags (recipe_id, dietary_id) VALUES (?, ?)',
+            [recipeId, dietaryId]
+        );
+    }
+}
+
+async function setRecipePhoto(recipeId, imageUrl) {
+    await db.query('DELETE FROM recipephoto WHERE recipe_id = ?', [recipeId]);
+
+    if (!imageUrl || !imageUrl.trim()) return;
+
+    const result = await db.query(
+        'INSERT INTO photo (url) VALUES (?)',
+        [imageUrl.trim()]
+    );
+
+    await db.query(
+        'INSERT INTO recipephoto (recipe_id, photo_id) VALUES (?, ?)',
+        [recipeId, result.insertId]
+    );
+}
+
 // ==============================
 // CREATE RECIPE
 // ==============================
@@ -18,8 +50,13 @@ router.get('/recipe/create', async (req, res) => {
             'SELECT country_id, name FROM country_category ORDER BY name'
         );
 
+        const dietaryTags = await db.query(
+            'SELECT dietary_id, name FROM dietary_category ORDER BY name'
+        );
+
         res.render('create-recipe', {
             countries,
+            dietaryTags,
             error: null,
             formData: {}
         });
@@ -35,24 +72,39 @@ router.post('/recipe/create', async (req, res) => {
         if (!req.session.user) return res.redirect('/auth/signin');
 
         const user_id = req.session.user.user_id;
-        const { title, description, ingredient_list, instructions, country_id } = req.body;
+
+        const {
+            title,
+            description,
+            ingredient_list,
+            instructions,
+            country_id,
+            image_url
+        } = req.body;
+
+        const dietaryIds = normaliseArray(req.body.dietary_ids);
 
         if (!title || !title.trim()) {
             const countries = await db.query(
                 'SELECT country_id, name FROM country_category ORDER BY name'
             );
 
+            const dietaryTags = await db.query(
+                'SELECT dietary_id, name FROM dietary_category ORDER BY name'
+            );
+
             return res.render('create-recipe', {
                 countries,
+                dietaryTags,
                 error: 'Recipe title is required.',
                 formData: req.body
             });
         }
 
-        await db.query(
-            `INSERT INTO recipe 
-       (user_id, title, description, ingredient_list, instructions, country_id)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+        const result = await db.query(
+            `INSERT INTO recipe
+             (user_id, title, description, ingredient_list, instructions, country_id)
+             VALUES (?, ?, ?, ?, ?, ?)`,
             [
                 user_id,
                 title.trim(),
@@ -62,6 +114,9 @@ router.post('/recipe/create', async (req, res) => {
                 country_id || null
             ]
         );
+
+        await setRecipeDietaryTags(result.insertId, dietaryIds);
+        await setRecipePhoto(result.insertId, image_url);
 
         res.redirect('/profile');
 
@@ -82,7 +137,12 @@ router.get('/recipe/:id/edit', async (req, res) => {
         const user_id = req.session.user.user_id;
 
         const rows = await db.query(
-            'SELECT * FROM recipe WHERE recipe_id = ? AND user_id = ?',
+            `SELECT r.*, p.url AS image_url
+             FROM recipe r
+             LEFT JOIN recipephoto rp ON r.recipe_id = rp.recipe_id
+             LEFT JOIN photo p ON rp.photo_id = p.photo_id
+             WHERE r.recipe_id = ? AND r.user_id = ?
+             LIMIT 1`,
             [req.params.id, user_id]
         );
 
@@ -94,9 +154,20 @@ router.get('/recipe/:id/edit', async (req, res) => {
             'SELECT country_id, name FROM country_category ORDER BY name'
         );
 
+        const dietaryTags = await db.query(
+            'SELECT dietary_id, name FROM dietary_category ORDER BY name'
+        );
+
+        const selectedRows = await db.query(
+            'SELECT dietary_id FROM recipe_dietary_tags WHERE recipe_id = ?',
+            [req.params.id]
+        );
+
         res.render('edit-recipe', {
             recipe: rows[0],
             countries,
+            dietaryTags,
+            selectedDietary: selectedRows.map(row => String(row.dietary_id)),
             error: null
         });
 
@@ -111,29 +182,26 @@ router.post('/recipe/:id/edit', async (req, res) => {
         if (!req.session.user) return res.redirect('/auth/signin');
 
         const user_id = req.session.user.user_id;
-        const { title, description, ingredient_list, instructions, country_id } = req.body;
+
+        const {
+            title,
+            description,
+            ingredient_list,
+            instructions,
+            country_id,
+            image_url
+        } = req.body;
+
+        const dietaryIds = normaliseArray(req.body.dietary_ids);
 
         if (!title || !title.trim()) {
-            const rows = await db.query(
-                'SELECT * FROM recipe WHERE recipe_id = ? AND user_id = ?',
-                [req.params.id, user_id]
-            );
-
-            const countries = await db.query(
-                'SELECT country_id, name FROM country_category ORDER BY name'
-            );
-
-            return res.render('edit-recipe', {
-                recipe: rows[0],
-                countries,
-                error: 'Recipe title is required.'
-            });
+            return res.status(400).send('Recipe title is required.');
         }
 
         const result = await db.query(
             `UPDATE recipe
-       SET title = ?, description = ?, ingredient_list = ?, instructions = ?, country_id = ?
-       WHERE recipe_id = ? AND user_id = ?`,
+             SET title = ?, description = ?, ingredient_list = ?, instructions = ?, country_id = ?
+             WHERE recipe_id = ? AND user_id = ?`,
             [
                 title.trim(),
                 description || null,
@@ -148,6 +216,9 @@ router.post('/recipe/:id/edit', async (req, res) => {
         if (result.affectedRows === 0) {
             return res.status(403).send('You do not have permission to edit this recipe.');
         }
+
+        await setRecipeDietaryTags(req.params.id, dietaryIds);
+        await setRecipePhoto(req.params.id, image_url);
 
         res.redirect(`/recipe/${req.params.id}`);
 
